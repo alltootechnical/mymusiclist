@@ -6,7 +6,7 @@
 </head>
 <body>
   <header>
-    <h1>MyMusicList Login</h1>
+    <h1>MyMusicList</h1>
     {% if user.is_authenticated %}
       Hi {{ user.username }}!
       <a href="{% url 'logout' %}">logout</a>

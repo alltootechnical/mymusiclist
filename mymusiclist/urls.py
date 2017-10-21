@@ -23,5 +23,6 @@ urlpatterns = [
     url(r'^logout/$', auth_views.logout, {'template_name': 'logged_out.html'}, name='logout'),
     url(r'^admin/', admin.site.urls),
     url(r'^signup/', core_views.signup, name='signup'),
-    url(r'^home/', core_views.home),
+    url(r'^profile/(?P<username>[A-Za-z0-9-+_.@]+)/$', core_views.user_profile_page, name='profile'),
+    url(r'^$', core_views.home),
 ]
