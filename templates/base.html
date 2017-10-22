@@ -9,13 +9,18 @@
 </head>
 <body>
   <header>
-    <h1>MyMusicList</h1>
     {% if user.is_authenticated %}
-      Hi {{ user.username }}!
-      <a href="{% url 'logout' %}">logout</a>
+      <ul id='nav_bar'>
+        <li id='nav_bar_items'><a id='nav_bar_items' href="/">MyMusicList</a></li>
+        <li id='nav_bar_items'><a id='nav_bar_items' href="/profile/{{user.username}}">Hi, {{user.username}}</a></li>
+        <li id='nav_bar_items' style="float:right"><a id='nav_bar_items' href="{% url 'logout' %}">Logout</a></li>
+      </ul>
     {% else %}
-      <a href="{% url 'login' %}">login</a>
-      <a href="{% url 'signup' %}">sign up</a>
+      <ul id='nav_bar'>
+        <li id='nav_bar_items'><a id='nav_bar_items' href="/">MyMusicList</a></li>
+        <li id='nav_bar_items'><a id='nav_bar_items' href="{% url 'login' %}">Login</a></li>
+        <li id='nav_bar_items'><a id='nav_bar_items' href="{% url 'signup' %}">Sign Up</a></li>
+      </ul>
     {% endif %}
   </header>
   <main>
