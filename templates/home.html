@@ -5,6 +5,5 @@
 {% block content %}
   <h2>Home</h2>
   {% if user.is_authenticated %}
-  <a href="/profile/{{user.username}}">View your profile</a>
   {% endif %}
 {% endblock %}
