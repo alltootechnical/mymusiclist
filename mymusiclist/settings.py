@@ -100,13 +100,13 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-STATICFILES_FINDERS = (
+STATICFILES_FINDERS = [
     "django.contrib.staticfiles.finders.FileSystemFinder",
     "django.contrib.staticfiles.finders.AppDirectoriesFinder",
-)
-STATICFILES_DIRS = (
+]
+STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "files"),
-)
+]
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.11/topics/i18n/
@@ -126,5 +126,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/files/'
+STATIC_ROOT = '/files/'
 
 LOGIN_REDIRECT_URL = '/'
