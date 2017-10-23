@@ -17,9 +17,9 @@
       </ul>
     {% else %}
       <ul id='nav_bar'>
-        <li id='nav_bar_items'><a id='nav_bar_items' href="/">MyMusicList</a></li>
-        <li id='nav_bar_items'><a id='nav_bar_items' href="{% url 'login' %}">Login</a></li>
-        <li id='nav_bar_items'><a id='nav_bar_items' href="{% url 'signup' %}">Sign Up</a></li>
+        <li id='nav_bar_items'><a id='nav_bar_items'  class="home" href="/">MyMusicList</a></li>
+        <li id='nav_bar_items'><a id='nav_bar_items' class="tab" href="{% url 'login' %}">LOGIN</a></li>
+        <li id='nav_bar_items'><a id='nav_bar_items' class="tab" href="{% url 'signup' %}">SIGN UP</a></li>
       </ul>
     {% endif %}
   </header>

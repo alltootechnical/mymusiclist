@@ -1,8 +1,12 @@
 {% extends 'base.html' %}
 
 {% block content %}
-  <h2>Sign up</h2>
-  <div class='signup_form'>
+
+  <div class='signup_form centered'>
+       <h2>Create your account</h2>
+       <p>
+          Sign up now to start building your music collection with us.  <br/> Already have an account? <a href="{% url 'login' %}">Log in</a>
+       </p>
   <form method="post">
     {% csrf_token %}
     {{ form.as_p }}

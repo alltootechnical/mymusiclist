@@ -1,35 +1,89 @@
 .signup_form{
-	color: black;
+
+
 }
+.login_form{
+
+
+}
+
+
+.centered {
+    margin: 0 auto;
+    margin-bottom: 30px;
+    text-align: left;
+    width: 800px;
+
+    padding: 50px;
+    font-size: 15px;
+    background-color: rgba(0,0,0,0.90);
+    border-radius: 10px;
+}
+
+.centered h2{
+     color: white;
+     font-size: 3 0px;
+     text-align: center;
+}
+
+#first_name_id{
+     font-size: 100px;
+}
+
+@font-face {
+font-family: 'PalanquinDark';
+src: url('../fonts/PalanquinDark-Regular.ttf');
+}
+
 
 #nav_bar{
 	position:fixed;
 	width : 100vw;
 	list-style-type: none;
-	background-color: grey;
+	background-color: #282525;
 	overflow: hidden;
 	margin : -15px;
 	margin-top: -70px;
 	padding: 0px;
-	height : 50px;
+	height : 55px;
 }
 
 #nav_bar_items {
 	float: left;
 	display: block;
 	color: white;
-	font-size: 20;
-	padding: 8px 10px;
-	letter-spacing: 3px;
+	font-family: PalanquinDark;
+	letter-spacing: 2px;
+	text-decoration: none;
+}
+
+#nav_bar_items.home{
+	background-color: #424949;
+	font-size: 30px;
+	letter-spacing: 5px;
+     padding:10px;
+     padding-top: 0px;
+}
+
+#nav_bar_items.tab {
+	float: left;
+	display: block;
+	color: white;
+	font-size: 20px;
+	font-family: PalanquinDark;
+	padding: 12px 20px;
+	letter-spacing: 2px;
 	text-decoration: none;
 }
 
 li a:hover, .active{
-	background-color: black;
+	background-color: #282544;
+
 }
 
 body {
 	color: white;
+	font-family: helvetica;
 	margin: 15px;
 	margin-top: 70px;
 	background-image: url(/files/images/background.jpg);
