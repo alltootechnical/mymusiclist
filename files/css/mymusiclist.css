@@ -2,9 +2,11 @@
 
 
 }
-.login_form{
 
-
+#login_submit{
+	background-color: black;
+	color: white;
+	margin-left: 6vw;
 }
 
 
@@ -12,11 +14,11 @@
     margin: 0 auto;
     margin-bottom: 30px;
     text-align: left;
-    width: 800px;
+    width: 65vw;
 
     padding: 50px;
     font-size: 15px;
-    background-color: rgba(0,0,0,0.90);
+    background-color: rgba(0,0,0,0.6);
     border-radius: 10px;
 }
 
@@ -45,10 +47,10 @@ src: url('../fonts/PalanquinDark-Regular.ttf');
 	margin : -15px;
 	margin-top: -70px;
 	padding: 0px;
-	height : 55px;
+	height : 58px;
 }
 
-#nav_bar_items {
+#nav_bar li, #nav_bar li a {
 	float: left;
 	display: block;
 	color: white;
@@ -57,7 +59,7 @@ src: url('../fonts/PalanquinDark-Regular.ttf');
 	text-decoration: none;
 }
 
-#nav_bar_items.home{
+.nav_bar_home{
 	background-color: #424949;
 	font-size: 30px;
 	letter-spacing: 5px;
@@ -65,7 +67,7 @@ src: url('../fonts/PalanquinDark-Regular.ttf');
      padding-top: 0px;
 }
 
-#nav_bar_items.tab {
+.nav_bar_tab{
 	float: left;
 	display: block;
 	color: white;
@@ -76,8 +78,8 @@ src: url('../fonts/PalanquinDark-Regular.ttf');
 	text-decoration: none;
 }
 
-li a:hover, .active{
-	background-color: #282544;
+.nav_bar_tab:hover{
+	background-color: blue;
 
 }
 
@@ -86,7 +88,6 @@ body {
 	font-family: helvetica;
 	margin: 15px;
 	margin-top: 70px;
-	background-image: url(/files/images/background.jpg);
-	background-position: left top;
+	background: url(/files/images/background.jpg) no-repeat center fixed;
 	background-size: cover;
 }

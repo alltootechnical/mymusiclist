@@ -1,4 +1,5 @@
 .DS_Store
 *.pyc
 *.sqlite
-
+*.sqlite3
+desktop.ini

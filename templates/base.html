@@ -1,25 +1,23 @@
-{% load static %}
-
 <!DOCTYPE html>
 <html>
 <head>
   <meta charset="utf-8">
   <title>{% block title %}MyMusicList{% endblock %}</title>
-  <link rel="stylesheet" href="{% static 'css/mymusiclist.css' %}">
+  <link rel="stylesheet" href="/files/css/mymusiclist.css">
 </head>
 <body>
   <header>
     {% if user.is_authenticated %}
       <ul id='nav_bar'>
-        <li id='nav_bar_items'><a id='nav_bar_items' href="/">MyMusicList</a></li>
-        <li id='nav_bar_items'><a id='nav_bar_items' href="/profile/{{user.username}}">Hi, {{user.username}}</a></li>
-        <li id='nav_bar_items' style="float:right"><a id='nav_bar_items' href="{% url 'logout' %}">Logout</a></li>
+        <li><a class="nav_bar_home" href="/">MyMusicList</a></li>
+        <li><a class="nav_bar_tab" href="/profile/{{user.username}}">Hi, {{user.username}}</a></li>
+        <li style="float:right"><a class="nav_bar_tab" href="{% url 'logout' %}">Logout</a></li>
       </ul>
     {% else %}
       <ul id='nav_bar'>
-        <li id='nav_bar_items'><a id='nav_bar_items'  class="home" href="/">MyMusicList</a></li>
-        <li id='nav_bar_items'><a id='nav_bar_items' class="tab" href="{% url 'login' %}">LOGIN</a></li>
-        <li id='nav_bar_items'><a id='nav_bar_items' class="tab" href="{% url 'signup' %}">SIGN UP</a></li>
+        <li><a class="nav_bar_home" href="/">MyMusicList</a></li>
+        <li><a class="nav_bar_tab" href="{% url 'login' %}">LOGIN</a></li>
+        <li><a class="nav_bar_tab" href="{% url 'signup' %}">SIGN UP</a></li>
       </ul>
     {% endif %}
   </header>
