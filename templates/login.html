@@ -4,15 +4,15 @@
 
 {% block content %}
 
-  <div class="login_form centered">
+  <div class="boxified main login_form">
 
-<h2 id='login_login'>Login</h2>
+<h2>Login</h2>
 
 
   <form method="post">
     {% csrf_token %}
     {{ form.as_p }}
-    <button type="submit" id='login_submit'>Login</button>
+    <button type="submit" class="buttoned">Login</button>
   </form>
   </div>
 {% endblock %}

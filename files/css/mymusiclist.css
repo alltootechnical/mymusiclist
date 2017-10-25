@@ -1,43 +1,49 @@
-.signup_form{
+/* In css, bottom overrides top, therefore always place generic styles such as 'buttoned' on top
+   and specific styles such as 'sidebar' in the bottom.*/
 
+/* Body background and default stuff*/
 
-}
-
-#login_submit{
-	background-color: black;
+body {
 	color: white;
-	margin-left: 6vw;
+	font-family: helvetica;
+	margin: 15px;
+	margin-top: 70px;
+	background: url(/files/images/background.jpg) no-repeat center fixed;
+	background-size: cover;
 }
 
-
-.centered {
-    margin: 0 auto;
-    margin-bottom: 30px;
+/* Main style is anything on the right side of the website.*/
+.main {
+	float:right;
+    margin-bottom: 2vh;
     text-align: left;
-    width: 65vw;
-
-    padding: 50px;
+    width: 74vw;
     font-size: 15px;
-    background-color: rgba(0,0,0,0.6);
-    border-radius: 10px;
 }
 
-.centered h2{
+.main h2{
      color: white;
      font-size: 3 0px;
      text-align: center;
 }
 
-#first_name_id{
-     font-size: 100px;
+/* Generic style for clickable shit*/
+
+.buttoned{
+	font-family: PalanquinDark;
+	background-color: rgba(0,0,0,0);
+	color: white;
 }
 
-@font-face {
-font-family: 'PalanquinDark';
-src: url('../fonts/PalanquinDark-Regular.ttf');
+/* Generic style for wrapping stuff in a box*/
+
+.boxified{
+	background-color: rgba(0,0,0,0.6);
+	border-radius: 10px;
+	padding: 3vw;
 }
 
-
+/* Nav bar */
 #nav_bar{
 	position:fixed;
 	width : 100vw;
@@ -48,6 +54,7 @@ src: url('../fonts/PalanquinDark-Regular.ttf');
 	margin-top: -70px;
 	padding: 0px;
 	height : 58px;
+	z-index: :0;
 }
 
 #nav_bar li, #nav_bar li a {
@@ -78,16 +85,44 @@ src: url('../fonts/PalanquinDark-Regular.ttf');
 	text-decoration: none;
 }
 
-.nav_bar_tab:hover{
+.nav_bar_tab:hover, .nav_bar_tab:active{
 	background-color: blue;
-
 }
 
-body {
-	color: white;
-	font-family: helvetica;
-	margin: 15px;
-	margin-top: 70px;
-	background: url(/files/images/background.jpg) no-repeat center fixed;
-	background-size: cover;
+/* Sidebar */
+.sidebar{
+	float:left;
+	margin-left: 0;
+	width: 14vw;
+	text-align: center;
+	padding: 1vw;
 }
+
+.sidebar img{
+	width: 13vw;
+	height: 13vw;
+	margin-top: 2vh;
+}
+
+@media (max-width:1280px){
+	.sidebar{
+		display:none;
+	}
+	.main{
+		width:100vw;
+	}
+}
+
+
+
+
+#first_name_id{
+     font-size: 100px;
+}
+
+@font-face {
+font-family: 'PalanquinDark';
+src: url('../fonts/PalanquinDark-Regular.ttf');
+}
+
+

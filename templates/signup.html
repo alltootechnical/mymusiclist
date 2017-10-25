@@ -2,7 +2,7 @@
 
 {% block content %}
 
-  <div class='signup_form centered'>
+  <div class='boxified main signup_form'>
        <h2>Create your account</h2>
        <p>
           Sign up now to start building your music collection with us.  <br/> Already have an account? Login
@@ -10,7 +10,7 @@
   <form method="post">
     {% csrf_token %}
     {{ form.as_p }}
-    <button type="submit">Sign up</button>
+    <button type="submit" class="buttoned">Sign up</button>
   </form>
   </div>
 {% endblock %}
