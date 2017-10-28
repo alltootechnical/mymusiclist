@@ -2,15 +2,20 @@
 
 {% block content %}
 
-  <div class='boxified main signup_form'>
-       <h2>Create your account</h2>
-       <p>
-          Sign up now to start building your music collection with us.  <br/> Already have an account? Login
-       </p>
-  <form method="post">
+<div class='boxified main signup_form'>
+{% if user.is_authenticated %}
+    <p>You are already logged in as {{user.username}}.</p>
+    <p><a href="/logout">Log out</a> or <a href="/">return to home page</a>.</p>
+{% else %}
+    <h2>Create your account</h2>
+    <p>
+      Sign up now to start building your music collection with us.  <br/> Already have an account? <a href="/login">Log in</a>
+    </p>
+    <form method="post">
     {% csrf_token %}
     {{ form.as_p }}
     <button type="submit" class="buttoned">Sign up</button>
-  </form>
-  </div>
+    </form>
+{% endif %}
+</div>
 {% endblock %}
