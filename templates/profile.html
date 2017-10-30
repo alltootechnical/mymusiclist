@@ -3,8 +3,8 @@
 {% block title %}{{profile.username}}'s Profile{% endblock %}
 
 {% block content %}
-     <div class="boxified main profile">
-
+<div class="boxified main profile">
+{% if user.is_authenticated %}
   <h2>{{profile.username}}'s Profile</h2>
   <ul>
       <li><strong>First Name:</strong> {{profile.first_name}}</li>
@@ -12,7 +12,10 @@
       <li><strong>Email Address:</strong> {{profile.email}}</li>
   </ul>
   {% if profile.username == user.username and user.is_authenticated %}
-  <a href="#" class="buttoned">Edit user profile</a>
-  </div>
+  <a href="edit" class="buttoned">Edit user profile</a>
   {% endif %}
+{% else %}
+    <p>Please <a href="/login">log in</a> to your account to view {{profile.username}}'s profile.</p>
+{% endif %}
+</div>
 {% endblock %}
