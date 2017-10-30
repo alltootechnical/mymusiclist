@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %}Edit Profile{% endblock %}
+
+{% block content %}
+<div class="boxified main profile">
+{% if request.user.is_authenticated %}
+    <h2>Edit Profile</h2>
+    <!-- <form method="post"> -->
+    <form method="post" action="{% url 'editprofile' slug=user.username %}">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="buttoned">Save changes</button>
+    </form>
+{% else %}
+    <p>Please <a href="{% url 'login' %}">log in</a> to your account to edit your profile.</p>
+{% endif %}
+</div>
+{% endblock %}

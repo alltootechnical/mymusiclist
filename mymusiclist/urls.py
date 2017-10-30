@@ -14,16 +14,18 @@ Including another URLconf
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
 from django.conf.urls import url
+from django.urls import reverse_lazy
 from django.contrib import admin
 from django.contrib.auth import views as auth_views
 from core import views as core_views
-"""import * pls"""
 
 urlpatterns = [
     url(r'^login/$', auth_views.login, {'template_name': 'login.html'}, name='login'),
     url(r'^logout/$', auth_views.logout, {'template_name': 'logged_out.html'}, name='logout'),
     url(r'^admin/', admin.site.urls),
-    url(r'^signup/', core_views.signup, name='signup'),
-    url(r'^profile/(?P<username>[A-Za-z0-9-+_.@]+)/$', core_views.user_profile_page, name='profile'),
-    url(r'^$', core_views.home),
+    url(r'^signup/$', core_views.signup, name='signup'),
+    url(r'^profile/(?P<slug>[A-Za-z0-9-+_.@]+)/$', core_views.user_profile_page, name='viewprofile'),
+    url(r'^profile/(?P<slug>[A-Za-z0-9-+_.@]+)/edit/$', core_views.EditProfile.as_view(success_url=reverse_lazy('home')), name='editprofile'),
+    # url(r'^profile/(?P<slug>[A-Za-z0-9-+_.@]+)/edit/$', core_views.EditProfile.as_view(success_url=reverse_lazy('profile', kwargs={'update':'true'})), name='editprofile'),
+    url(r'^$', core_views.home, name='home'),
 ]
