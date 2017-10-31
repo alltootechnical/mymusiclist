@@ -11,7 +11,7 @@
       <li><strong>Last Name:</strong> {{profile.last_name}}</li>
       <li><strong>Email Address:</strong> {{profile.email}}</li>
   </ul>
-  {% if profile.username == request.user.username and request.user.is_authenticated %}
+  {% if profile.username == request.user.username %}
   <a href="edit" class="buttoned">Edit user profile</a>
   {% endif %}
 {% else %}

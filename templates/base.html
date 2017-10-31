@@ -7,10 +7,10 @@
 </head>
 <body>
   <header>
-    {% if user.is_authenticated %}
+    {% if request.user.is_authenticated %}
       <ul id='nav_bar'>
         <li><a class="nav_bar_home" href="/">MyMusicList</a></li>
-        <li><a class="nav_bar_tab" href="/profile/{{user.username}}">Hi, {{user.username}}</a></li>
+        <li><a class="nav_bar_tab" href="/profile/{{request.user.username}}">Hi, {{request.user.username}}</a></li>
         <li style="float:right"><a class="nav_bar_tab" href="{% url 'logout' %}">Logout</a></li>
       </ul>
     {% else %}

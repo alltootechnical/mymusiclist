@@ -5,6 +5,7 @@
 {% block content %}
 <div class="boxified main profile">
 {% if request.user.is_authenticated %}
+{% if user.username == request.user.username %}
     <h2>Edit Profile</h2>
     <!-- <form method="post"> -->
     <form method="post" action="{% url 'editprofile' slug=user.username %}">
@@ -12,6 +13,9 @@
         {{ form.as_p }}
         <button type="submit" class="buttoned">Save changes</button>
     </form>
+{% else %}
+    <p>You can only edit your own user profile.  Go to your own <a href="{% url 'viewprofile' slug=request.user.username %}">profile page</a>.</p>
+{% endif %}
 {% else %}
     <p>Please <a href="{% url 'login' %}">log in</a> to your account to edit your profile.</p>
 {% endif %}
