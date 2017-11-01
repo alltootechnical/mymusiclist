@@ -4,15 +4,17 @@
 
 {% block content %}
 
-  <div class="boxified main login_form">
-
-<h2>Login</h2>
-
-
-  <form method="post">
+<div class="boxified main login_form">
+{% if request.user.is_authenticated %}
+    <p>You are already logged in as {{request.user.username}}. You need to log out before logging in as a different user.</p>
+    <p><a href="/logout">Log out</a> or <a href="/">return to the home page</a>.</p>
+{% else %}
+    <h2>Login</h2>
+    <form method="post">
     {% csrf_token %}
     {{ form.as_p }}
     <button type="submit" class="buttoned">Login</button>
-  </form>
-  </div>
+    </form>
+</div>
+{% endif %}
 {% endblock %}

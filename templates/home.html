@@ -33,6 +33,6 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vel tristique ris
 Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Mauris suscipit nec velit non egestas. Quisque auctor viverra urna, at euismod turpis ornare id. Aliquam pharetra purus quis dui blandit tincidunt. Quisque massa ligula, malesuada vel leo eu, accumsan vulputate nulla. Integer faucibus malesuada pharetra. Duis varius sapien sit amet justo malesuada fringilla. Integer eget ex sed urna auctor vestibulum. Aliquam sit amet molestie velit, a pretium ligula. Mauris gravida turpis vitae scelerisque finibus.
   </div>
 
-  {% if user.is_authenticated %}
+  {% if request.user.is_authenticated %}
   {% endif %}
 {% endblock %}
