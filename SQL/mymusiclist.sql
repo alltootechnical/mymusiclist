@@ -34,9 +34,9 @@ create table song(
 
 create table music_playlist(
 	id int unique primary key auto_increment,
-	owner_id int,
 	playlist_name varchar(32) not null,
 	is_public boolean not null,
+	owner_id int,
 	FOREIGN KEY (owner_id) REFERENCES user_account(id)
 	);
 

@@ -122,7 +122,7 @@ body {
 
 @font-face {
 font-family: 'PalanquinDark';
-src: url('../fonts/PalanquinDark-Regular.ttf');
+src: url('/files/fonts/palanquindark/PalanquinDark-Regular.ttf');
 }
 
 
