@@ -1,5 +1,5 @@
 .DS_Store
-*.pyc
-*.sqlite
+__pycache__/
+*.py[cod]
 *.sqlite3
 desktop.ini
