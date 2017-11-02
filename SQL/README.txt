@@ -3,7 +3,7 @@ mymusiclist.sql
 convert
 extract.sql
 
-Assuming you have sqlite3 installed,
+Assuming you have sqlite3 installed and Django setup with migrations,
 While in same directory as db.sqlite3, run:
 
 Sqlite3

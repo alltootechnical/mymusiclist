@@ -62,8 +62,8 @@ create table tag_entry(
 	FOREIGN KEY (entry_id) REFERENCES music_entry(id)
 );
 
-
 -- assuming we have featured songs
+-- currently unused
 
 create table featured_songs(
 	song_id int unique,
