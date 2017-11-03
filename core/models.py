@@ -6,33 +6,33 @@ class user_account(models.Model):
 	last_name = models.CharField(max_length=64)
 	email = models.CharField(max_length=64)
 
-class artist(models.Model):
+class Artist(models.Model):
 	id = models.AutoField(primary_key=True)
 	name = models.CharField(max_length=64)
 	description = models.TextField()
 	def __str__(self):
 		return self.name
 
-class album(models.Model):
+class Album(models.Model):
 	id = models.AutoField(primary_key=True)
 	album_name = models.CharField(max_length=64)
 	year = models.DecimalField(max_digits=4, decimal_places=0)
-	artist = models.ForeignKey(artist)
+	artist = models.ForeignKey(Artist)
 	def __str__(self):
 		return self.album_name
 
-class song(models.Model):
+class Song(models.Model):
 	id = models.AutoField(primary_key=True)
 	song_name = models.TextField()
 	genre = models.CharField(max_length=128)
 	song_length = models.PositiveIntegerField(default=0, null=True)
 	lyrics = models.TextField(null=True)
-	artist = models.ForeignKey(artist)
-	album = models.ForeignKey(album)
+	album = models.ForeignKey(Album)
+	artist = models.ForeignKey(Artist)
 	def __str__(self):
 		return self.song_name
 
-class music_playlist(models.Model):
+class MusicPlaylist(models.Model):
 	id = models.AutoField(primary_key=True)
 	playlist_name = models.CharField(max_length=32)
 	is_public = models.BooleanField(default=False)
@@ -40,7 +40,7 @@ class music_playlist(models.Model):
 	def __str__(self):
 		return self.playlist_name
 
-class music_entry(models.Model):
+class MusicEntry(models.Model):
 	RATING_CHOICES = (
 		(0,'1'),
 		(1,'2'),
@@ -56,12 +56,12 @@ class music_entry(models.Model):
 	id = models.AutoField(primary_key=True)
 	order_in_playlist = models.PositiveSmallIntegerField()
 	rating = models.DecimalField(max_digits=1, decimal_places=0, choices=RATING_CHOICES)
-	playlist = models.ForeignKey(music_playlist)
-	song = models.ForeignKey(song)
+	playlist = models.ForeignKey(MusicPlaylist)
+	song = models.ForeignKey(Song)
 
-class tag(models.Model):
+class Tag(models.Model):
 	id = models.AutoField(primary_key=True)
 	name = models.CharField(max_length=32)
-	tag = models.ManyToManyField(music_entry)
+	tag = models.ManyToManyField(MusicEntry)
 	def __str__(self):
 		return self.name
