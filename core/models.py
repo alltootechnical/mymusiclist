@@ -10,12 +10,16 @@ class artist(models.Model):
 	id = models.AutoField(primary_key=True)
 	name = models.CharField(max_length=64)
 	description = models.TextField()
+	def __str__(self):
+		return self.name
 
 class album(models.Model):
 	id = models.AutoField(primary_key=True)
 	album_name = models.CharField(max_length=64)
 	year = models.DecimalField(max_digits=4, decimal_places=0)
 	artist = models.ForeignKey(artist)
+	def __str__(self):
+		return self.album_name
 
 class song(models.Model):
 	id = models.AutoField(primary_key=True)
@@ -25,12 +29,16 @@ class song(models.Model):
 	lyrics = models.TextField(null=True)
 	artist = models.ForeignKey(artist)
 	album = models.ForeignKey(album)
+	def __str__(self):
+		return self.song_name
 
 class music_playlist(models.Model):
 	id = models.AutoField(primary_key=True)
 	playlist_name = models.CharField(max_length=32)
 	is_public = models.BooleanField(default=False)
 	user = models.ForeignKey(user_account)
+	def __str__(self):
+		return self.playlist_name
 
 class music_entry(models.Model):
 	RATING_CHOICES = (
@@ -55,3 +63,5 @@ class tag(models.Model):
 	id = models.AutoField(primary_key=True)
 	name = models.CharField(max_length=32)
 	tag = models.ManyToManyField(music_entry)
+	def __str__(self):
+		return self.name
