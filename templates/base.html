@@ -4,6 +4,7 @@
   <meta charset="utf-8">
   <title>{% block title %}MyMusicList{% endblock %}</title>
   <link rel="stylesheet" href="/files/css/mymusiclist.css">
+  <link rel="stylesheet" href="/files/css/font-awesome.css">
 </head>
 <body>
   <header>
@@ -18,6 +19,7 @@
         <li><a class="nav_bar_home" href="/">MyMusicList</a></li>
         <li><a class="nav_bar_tab" href="{% url 'login' %}">LOGIN</a></li>
         <li><a class="nav_bar_tab" href="{% url 'signup' %}">SIGN UP</a></li>
+        <li style="float:right"><button class="nav_bar_tab"type="button" onclick="toggleWallpaper()"></button></li>
       </ul>
     {% endif %}
   </header>
@@ -34,5 +36,10 @@
     {% block content %}
     {% endblock %}
   </main>
+  <script>
+    function toggleWallpaper() {
+      document.getElementByID("nav_bar").style.background-color = "white";
+    }
+  </script>
 </body>
 </html>
