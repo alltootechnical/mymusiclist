@@ -104,6 +104,10 @@ body {
 	margin-top: 2vh;
 }
 
+.a {
+	color: white;
+}
+
 @media (max-width:1280px){
 	.sidebar{
 		display:none;

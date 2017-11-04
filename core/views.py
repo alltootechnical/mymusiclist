@@ -1,14 +1,12 @@
 from django.shortcuts import render
-
-# Create your views here.
-
 from django.contrib.auth import login, authenticate
-# from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views.generic.edit import UpdateView
 
 from core.forms import SignUpForm
+from core.models import *
+from core.musicbrainzhook import *
 
 def signup(request):
     if request.method == 'POST':
@@ -37,6 +35,11 @@ class EditProfile(UpdateView):
     template_name = 'edit_profile.html'
     slug_field = 'username'
     slug_url_kwarg = 'slug'
+
+def search(request,term):
+    results = album.objects.filter(album_name__contains = term)
+    custom()
+    return render(request, 'search.html',{'term': term, 'results': results})
 
 # def edit_profile(request, username):
 #     if request.method == 'POST':
