@@ -38,7 +38,7 @@ class EditProfile(UpdateView):
 
 def search(request):
 	
-	type = 'album'
+	type = request.GET.get('searchtype', '')
 	term = request.GET.get('search', '')
 	artistAlbums = album.objects.filter(artist__name__contains = term)
 	
@@ -55,7 +55,7 @@ def search(request):
 		'results': results,
 		'albums': artistAlbums,
 	}
-	return render(request, 'search'+type+'.html', context)
+	return render(request, 'search.html', context)
 	
 def artist_profile(request, identifier):
     result = artist.objects.filter(id = identifier)

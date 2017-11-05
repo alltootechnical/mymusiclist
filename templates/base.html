@@ -6,32 +6,6 @@
   <link rel="stylesheet" href="/files/css/mymusiclist.css">
   <link rel="stylesheet" href="/files/css/font-awesome.css">
 </head>
-
-
-<style>
-
-	input[type=text] {
-		width: 130px;
-		box-sizing: border-box;
-		border: 2px solid #ccc;
-		border-radius: 4px;
-		font-size: 16px;
-		background-color: white;
-		background-image: url('searchicon.png');
-		background-position: 10px 10px; 
-		background-repeat: no-repeat;
-		padding: 12px 20px 12px 40px;
-		-webkit-transition: width 0.4s ease-in-out;
-		transition: width 0.4s ease-in-out;
-	}
-	
-	input[type=text]:focus {
-		width: 80%;
-	}
-
-</style>
-
-
 <body>
   <header>
     {% if request.user.is_authenticated %}
@@ -60,11 +34,52 @@
       {% endblock %}
     </div>
   </header>
+	
+	
+	
+	
+	
+	
+	
+	<script>
+	function mainA(){
+		document.getElementById("demo").innerHTML = "Album Search";
+		document.getElementById("searchbytype").value = "album";
+	}
+	function mainB(){
+		document.getElementById("demo").innerHTML = "Artist Search";
+		document.getElementById("searchbytype").value = "artist";
+	}
+	function mainC(){
+		document.getElementById("demo").innerHTML = "Song Search";
+		document.getElementById("searchbytype").value = "song";
+	}
+	</script>
+	
+	<form action="{% url 'search' %}" method="get">
+		<div class="wrap">
+			<div class="search">
+			<input type="text" name="search" placeholder="Search..">
+			<input id="searchbytype" type="hidden" name="searchtype" value="album">
+			<p id="demo">Album Search</p></input>
+			<button>Search</button>
+			</div>
+		</div>
+	</form>
   
   
-  <form action="{% url 'search' %}" method="get">
-	<input type="text" name="search" placeholder="Search..">
-  </form>
+	<div>
+		<a><button onclick="mainA()">By Album</button></a>
+		<a><button onclick="mainB()">By Artist</button></a>
+		<a><button onclick="mainC()">By Song</button></a>
+    </div>
+  
+  
+  
+  
+  
+  
+  
   
   
     {% block content %}
