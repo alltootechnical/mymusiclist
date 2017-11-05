@@ -57,6 +57,17 @@ def search(request):
 	}
 	return render(request, 'search'+type+'.html', context)
 	
+def artist_profile(request, identifier):
+    result = artist.objects.filter(id = identifier)
+    albums = album.objects.filter(artist = identifier)
+    return render(request, 'artist.html', {'result': result[0], 'albums': albums})
+
+def album_profile(request, identifier):
+    result = album.objects.filter(id = identifier)
+    artist_name = result[0].artist.name
+    songs = song.objects.filter(album = identifier)
+    return render(request, 'album.html', {'result':result[0], 'songs': songs, 'artist': artist_name})
+
 # def search(request,term):
     # results = album.objects.filter(album_name__contains = term)
     # custom()
