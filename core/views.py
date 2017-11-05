@@ -1,14 +1,12 @@
 from django.shortcuts import render
-
-# Create your views here.
-
 from django.contrib.auth import login, authenticate
-# from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views.generic.edit import UpdateView
 
 from core.forms import SignUpForm
+from core.models import *
+from core.musicbrainzhook import *
 
 def signup(request):
     if request.method == 'POST':
@@ -37,6 +35,43 @@ class EditProfile(UpdateView):
     template_name = 'edit_profile.html'
     slug_field = 'username'
     slug_url_kwarg = 'slug'
+
+def search(request):
+	
+	type = request.GET.get('searchtype', '')
+	term = request.GET.get('search', '')
+	artistAlbums = album.objects.filter(artist__name__contains = term)
+	
+	if type == 'song':
+		results = song.objects.filter(song_name__contains = term)
+	elif type == 'album':
+		results = album.objects.filter(album_name__contains = term)
+	elif type == 'artist':
+		results = artist.objects.filter(name__contains = term)
+		
+	context = {
+		'type': type,
+		'term': term,
+		'results': results,
+		'albums': artistAlbums,
+	}
+	return render(request, 'search.html', context)
+	
+def artist_profile(request, identifier):
+    result = artist.objects.filter(id = identifier)
+    albums = album.objects.filter(artist = identifier)
+    return render(request, 'artist.html', {'result': result[0], 'albums': albums})
+
+def album_profile(request, identifier):
+    result = album.objects.filter(id = identifier)
+    artist_name = result[0].artist.name
+    songs = song.objects.filter(album = identifier)
+    return render(request, 'album.html', {'result':result[0], 'songs': songs, 'artist': artist_name})
+
+# def search(request,term):
+    # results = album.objects.filter(album_name__contains = term)
+    # custom()
+    # return render(request, 'search.html',{'term': term, 'results': results})
 
 # def edit_profile(request, username):
 #     if request.method == 'POST':

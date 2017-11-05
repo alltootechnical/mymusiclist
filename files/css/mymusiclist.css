@@ -115,6 +115,10 @@ body {
 	margin-top: 2vh;
 }
 
+a, .link{
+	color: white;
+}
+
 @media (max-width:1280px){
 	.sidebar{
 		display:none;
