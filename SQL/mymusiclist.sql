@@ -1,18 +1,18 @@
 -- DO NOT RUN
-create table user_account(
+create table UserAccount(
 	id int unique primary key auto_increment,
 	first_name varchar(64) not null,
 	last_name varchar(64) not null,
 	email varchar(64) not null
 	);
 
-create table artist(
+create table Artist(
 	id int unique primary key auto_increment,
 	name varchar(64) not null,
 	description text
 	);
 
-create table album(
+create table Album(
 	id int unique primary key auto_increment,
 	album_name varchar(64) not null,
 	year int(4) not null,
@@ -20,7 +20,7 @@ create table album(
 	FOREIGN KEY (artist_id) REFERENCES artist(id)
 	);
 
-create table song(
+create table Song(
 	id int unique primary key auto_increment,
 	song_name mediumtext not null,
 	genre varchar(128),
@@ -32,7 +32,7 @@ create table song(
 	FOREIGN KEY (album_id) REFERENCES album(id)
 	);
 
-create table music_playlist(
+create table MusicPlaylist(
 	id int unique primary key auto_increment,
 	playlist_name varchar(32) not null,
 	is_public boolean not null,
@@ -40,7 +40,7 @@ create table music_playlist(
 	FOREIGN KEY (owner_id) REFERENCES user_account(id)
 	);
 
-create table music_entry(
+create table MusicEntry(
 	id int unique primary key auto_increment,
 	order_in_playlist int unique not null,
 	rating ENUM('1','2','3','4','5','6','7','8','9','10'),
@@ -50,12 +50,12 @@ create table music_entry(
 	FOREIGN KEY (song_id) REFERENCES song(id)
 	);
 
-create table tag(
+create table Tag(
 	id int unique primary key auto_increment,
 	name varchar(32) not null
 )
 
-create table tag_entry(
+create table TagEntry(
 	tag_id int,
 	entry_id int unique,
 	FOREIGN KEY (tag_id) REFERENCES tag(id),
