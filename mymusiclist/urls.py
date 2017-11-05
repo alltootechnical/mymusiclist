@@ -24,8 +24,12 @@ urlpatterns = [
     url(r'^logout/$', auth_views.logout, {'template_name': 'logged_out.html'}, name='logout'),
     url(r'^admin/', admin.site.urls),
     url(r'^signup/$', core_views.signup, name='signup'),
-    url(r'^search/(?P<term>[A-Za-z0-9-+_.@]+)/$',core_views.search, name='search'),
-    url(r'^profile/(?P<slug>[A-Za-z0-9-+_.@]+)/$', core_views.user_profile_page, name='viewprofile'),
+	
+	# url(r'^search_by_(?P<type>[A-Za-z0-9-+_.@]+)/?search=(?P<term>[A-Za-z0-9-+_.@]+)/$',core_views.search, name='search'),
+	url(r'^search/$',core_views.search, name='search'),
+    # url(r'^search/(?P<term>[A-Za-z0-9-+_.@]+)/$',core_views.search, name='search'),
+	
+	url(r'^profile/(?P<slug>[A-Za-z0-9-+_.@]+)/$', core_views.user_profile_page, name='viewprofile'),
     url(r'^profile/(?P<slug>[A-Za-z0-9-+_.@]+)/edit/$', core_views.EditProfile.as_view(success_url=reverse_lazy('home')), name='editprofile'),
     # url(r'^profile/(?P<slug>[A-Za-z0-9-+_.@]+)/edit/$', core_views.EditProfile.as_view(success_url=reverse_lazy('profile', kwargs={'update':'true'})), name='editprofile'),
     url(r'^$', core_views.home, name='home')
