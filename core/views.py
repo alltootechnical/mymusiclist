@@ -64,7 +64,7 @@ def artist_profile(request, identifier):
 
 def album_profile(request, identifier):
     result = Album.objects.filter(id = identifier)
-    artist_name = result[0].Artist.name
+    artist_name = result[0].artist.name
     songs =Song.objects.filter(album = identifier)
     return render(request, 'album.html', {'result':result[0], 'songs': songs, 'artist': artist_name})
 
