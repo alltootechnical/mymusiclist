@@ -37,18 +37,18 @@ class EditProfile(UpdateView):
     slug_url_kwarg = 'slug'
 
 def search(request):
-	
+
 	type = request.GET.get('searchtype', '')
 	term = request.GET.get('search', '')
-	artistAlbums = album.objects.filter(artist__name__contains = term)
-	
+	artistAlbums = Album.objects.filter(artist__name__contains = term)
+
 	if type == 'song':
-		results = song.objects.filter(song_name__contains = term)
+		results =Song.objects.filter(song_name__contains = term)
 	elif type == 'album':
-		results = album.objects.filter(album_name__contains = term)
+		results = Album.objects.filter(album_name__contains = term)
 	elif type == 'artist':
-		results = artist.objects.filter(name__contains = term)
-		
+		results = Artist.objects.filter(name__contains = term)
+
 	context = {
 		'type': type,
 		'term': term,
@@ -56,16 +56,16 @@ def search(request):
 		'albums': artistAlbums,
 	}
 	return render(request, 'search.html', context)
-	
+
 def artist_profile(request, identifier):
-    result = artist.objects.filter(id = identifier)
-    albums = album.objects.filter(artist = identifier)
+    result = Artist.objects.filter(id = identifier)
+    albums = Album.objects.filter(artist = identifier)
     return render(request, 'artist.html', {'result': result[0], 'albums': albums})
 
 def album_profile(request, identifier):
-    result = album.objects.filter(id = identifier)
-    artist_name = result[0].artist.name
-    songs = song.objects.filter(album = identifier)
+    result = Album.objects.filter(id = identifier)
+    artist_name = result[0].Artist.name
+    songs =Song.objects.filter(album = identifier)
     return render(request, 'album.html', {'result':result[0], 'songs': songs, 'artist': artist_name})
 
 # def search(request,term):
