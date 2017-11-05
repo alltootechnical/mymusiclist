@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block title %}Song search test{% endblock %}
+
+{% block sidebar %}
+<h2> Search results (by {{type}})</h2>
+<p>
+	You searched for '{{term}}' <br>
+	Found {{results.count}} results <br>
+	Source: Local</p>
+{% endblock %}
+
+{% block content %}
+
+	{% for i in results %}
+	<div class = "boxified main">
+		{% if type == "album" %}
+			<h3><a href="/album/{{i.id}}">{{i.album_name}}</a></h3>
+			<p>Artist: <a href="/artist/{{i.artist.id}}">{{i.artist.name}}</a><br>
+				Year: {{i.year}} </p>
+		{% endif %}
+
+
+		{% if type == "artist" %}
+			<h3><a href="/artist/{{i.id}}">{{i.name}}</a></h3>
+			{% for j in albums %}
+			<p> <tab>
+			{% if j.artist.name == i.name %}
+			<h3><a href="/album/{{j.id}}">{{ j.album_name }}</a> - {{ j.year }} </h3>
+			{% endif %} </p>
+			{% endfor %}
+		{% endif %}
+
+
+		{% if type == "song" %}
+			<h3>{{i.song_name}}</h3>
+			<h3><a href="/album/{{i.album.id}}">{{i.album.album_name}}</a></h3>
+			<p>Artist: <a href="/artist/{{i.artist.id}}">{{i.artist.name}}</a><br>
+				Year: {{i.album.year}} </p>
+		{% endif %}
+
+	</div>
+	{% endfor %}
+
+
+{% endblock %}

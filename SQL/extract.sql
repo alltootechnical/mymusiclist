@@ -1,7 +1,7 @@
 -- Do NOT RUN
 
 --artist extraction
-INSERT INTO artist(id, name, description)
+INSERT INTO Artist(id, name, description)
 select ag.artistid, ag.name, "No description available" from artists_group ag where ag.name in
 (
 	"Taylor Swift",
@@ -26,18 +26,89 @@ select ag.artistid, ag.name, "No description available" from artists_group ag wh
 	"Halsey",
 	"Jason Derulo",
 	"ClariS",
-	"Post Malone"
+	"Post Malone",
+	"5 Seconds of Summer",
+	"21 Savage",
+	"Adam Lambert",
+	"Adele",
+	"Alan Walker",
+	"Alessia Cara",
+	"Alesso",
+	"American Authors",
+	"Andy Grammer",
+	"Ariana Grande",
+	"Backstreet Boys",
+	"Bastille",
+	"Bebe Rexha",
+	"Big Sean",
+	"Bruno Mars",
+	"Calvin Harris",
+	"Camila Cabello",
+	"Cardiknox",
+	"The Chainsmokers",
+	"Charlie Puth",
+	"Chris Brown",
+	"Coldplay",
+	"David Guetta",
+	"Dawin",
+	"Daya",
+	"DJ Khaled",
+	"DNCE",
+	"Drake",
+	"Echosmith",
+	"Ellie Goulding",
+	"Fall Out Boy",
+	"Fetty Wap",
+	"Fifth Harmony",
+	"Flo Rida",
+	"Galantis",
+	"Hinder",
+	"Jay Sean",
+	"Imagine Dragons",
+	"Jason Derulo",
+	"Jason Mraz",
+	"Jessie J",
+	"Jonas Blue",
+	"Justin Bieber",
+	"Justin Timberlake",
+	"Katy Perry",
+	"Khalid",
+	"Lifehouse",
+	"Lorde",
+	"Maroon 5",
+	"Martin Garrix",
+	"Meghan Trainor",
+	"Miley Cyrus",
+	"Moderat",
+	"Nelly",
+	"Ne-Yo",
+	"Nicki Minaj",
+	"Owl City",
+	"Rihanna",
+	"Rixton",
+	"Sam Smith",
+	"The Script",
+	"Secondhand Serenade",
+	"Selena Gomez",
+	"Shawn Mendes",
+	"Sia",
+	"Starship",
+	"Troye Sivan",
+	"Twenty One Pilots",
+	"Wiz Khalifa",
+	"Zara Larsson",
+	"Zedd"
 );
 
 --album extraction
-INSERT INTO album(id, album_name, year, artist_id)
-select tg.id, name, year, (select artistid from torrents_artists where groupid=tg.id order by importance asc limit 1) as artistidv 
+INSERT INTO Album(id, album_name, year, artist_id)
+select distinct tg.id, name, year, (select artistid from torrents_artists where groupid=tg.id order by importance asc limit 1) as artistidv 
 from torrents_group tg join torrents_artists ta on ta.groupid = tg.id
 where (select artistid from torrents_artists where groupid=tg.id order by importance asc limit 1)
  in (select id from artist) and (ta.artistid in (select id from artist)) and tg.releasetype=1 order by tg.id;
 
 --song extraction
-INSERT INTO song(song_name, genre, artist_id, album_id)
+INSERT INTO Song(song_name, genre, artist_id, album_id)
 select (select filelist from torrents where groupid=album.id order by time desc limit 1), tg.taglist , artist.id, album.id
 from artist join album on album.artist_id = artist.id join torrents_group tg on tg.id = album.id;
 

@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}{{result.name}}{% endblock %}
+
+
+{% block sidebar %}
+<h2> Artist info </h2>
+<p>
+	Artist: {{result.name}} <br>
+	Albums: {{albums.count}} <br>
+	<br>
+	<h2> Description </h2>
+	{{result.description}}
+{% endblock %}
+
+{% block content %}
+{% for i in albums %}
+<div class = "boxified main">
+	<h3> <a class = "link" href= "/album/{{i.id}}"> {{i.album_name}} </a></h3>
+	<p> Year: {{i.year}} </p>
+</div>
+{% endfor %}
+{% endblock %}
