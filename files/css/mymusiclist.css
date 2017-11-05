@@ -41,6 +41,17 @@ body {
 	background-color: rgba(0,0,0,0.6);
 	border-radius: 10px;
 	padding: 3vw;
+	text-align:center;
+}
+
+.features{
+	background-color: rgba(0,0,0,0.6);
+	border-radius: 10px;
+	padding: 3vw;
+	max-width: 600px
+    width:100px;
+    text-align:center;
+    border: 1px solid #000;
 }
 
 /* Nav bar */
@@ -112,7 +123,6 @@ body {
 		width:100vw;
 	}
 }
-
 
 
 
