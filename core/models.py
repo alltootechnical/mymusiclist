@@ -1,11 +1,5 @@
 from django.db import models
 
-class UserAccount(models.Model):
-	id = models.AutoField(primary_key=True)
-	first_name = models.CharField(max_length=64)
-	last_name = models.CharField(max_length=64)
-	email = models.CharField(max_length=64)
-
 class Artist(models.Model):
 	id = models.AutoField(primary_key=True)
 	name = models.CharField(max_length=64)
@@ -31,37 +25,3 @@ class Song(models.Model):
 	album = models.ForeignKey(Album)
 	def __str__(self):
 		return self.song_name
-
-class MusicPlaylist(models.Model):
-	id = models.AutoField(primary_key=True)
-	playlist_name = models.CharField(max_length=32)
-	is_public = models.BooleanField(default=False)
-	user = models.ForeignKey(UserAccount)
-	def __str__(self):
-		return self.playlist_name
-
-class MusicEntry(models.Model):
-	RATING_CHOICES = (
-		(0,'1'),
-		(1,'2'),
-		(2,'3'),
-		(3,'4'),
-		(4,'5'),
-		(5,'6'),
-		(6,'7'),
-		(7,'8'),
-		(8,'9'),
-		(9,'10')
-		)
-	id = models.AutoField(primary_key=True)
-	order_in_playlist = models.PositiveSmallIntegerField()
-	rating = models.DecimalField(max_digits=1, decimal_places=0, choices=RATING_CHOICES)
-	playlist = models.ForeignKey(MusicPlaylist)
-	song = models.ForeignKey(Song)
-
-class Tag(models.Model):
-	id = models.AutoField(primary_key=True)
-	name = models.CharField(max_length=32)
-	tag = models.ManyToManyField(MusicEntry)
-	def __str__(self):
-		return self.name
