@@ -4,7 +4,10 @@
 
 {% block content %}
 
-<div class="boxified main login_form">
+<div class="w3-panel w3-green w3-padding w3-display-container" style="height:20em"  >
+     <div class="w3-display-middle">
+
+
 {% if request.user.is_authenticated %}
     <p>You are already logged in as {{request.user.username}}. You need to log out before logging in as a different user.</p>
     <p><a href="/logout">Log out</a> or <a href="/">return to the home page</a>.</p>
@@ -13,8 +16,9 @@
     <form method="post">
     {% csrf_token %}
     {{ form.as_p }}
-    <button type="submit" class="buttoned">Login</button>
+    <button type="submit" class="w3-button w3-black">Login</button>
     </form>
+    </div>
 </div>
 {% endif %}
 {% endblock %}
