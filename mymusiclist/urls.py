@@ -19,6 +19,7 @@ from django.contrib import admin
 
 from django.contrib.auth import views as auth_views
 from core import views as core_views
+from core import exthook as exthook
 from user import views as user_views
 from search import views as search_views
 
@@ -34,3 +35,5 @@ urlpatterns = [
     url(r'^profile/(?P<slug>[A-Za-z0-9-+_.@]+)/edit/$', user_views.EditProfile.as_view(success_url=reverse_lazy('home')), name='editprofile'),
     url(r'^$', core_views.home, name='home')
 ]
+
+exthook.init()

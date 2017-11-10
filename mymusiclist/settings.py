@@ -37,7 +37,6 @@ INSTALLED_APPS = [
     'playlist',
     'tag',
     'user',
-    'search.musicbrainzhook',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
