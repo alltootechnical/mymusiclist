@@ -1,12 +1,12 @@
 from django.db import models
 from core.models import *
-from user.models import *
+from django.contrib.auth.models import User
 
 class MusicPlaylist(models.Model):
 	id = models.AutoField(primary_key=True)
 	playlist_name = models.CharField(max_length=32)
 	is_public = models.BooleanField(default=False)
-	user = models.ForeignKey(UserAccount)
+	user = models.ForeignKey(User)
 	def __str__(self):
 		return self.playlist_name
 

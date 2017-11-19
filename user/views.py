@@ -29,3 +29,9 @@ class EditProfile(UpdateView):
     slug_field = 'username'
     slug_url_kwarg = 'slug'
 
+    def clean_email(self):
+        email = self.cleaned_data.get('email')
+        username = self.cleaned_data.get('username')
+        if email and User.objects.filter(email=email).exclude(username=username).exists():
+            raise forms.ValidationError('This email address has been already used by another user.')
+        return email
