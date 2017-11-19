@@ -13,30 +13,50 @@
 {% block content %}
 
 	{% for i in results %}
-	<div class = "boxified main">
+	<div class = " main w3-margin w3-card-4">
 		{% if type == "album" %}
-			<h3><a href="/album/{{i.id}}">{{i.album_name}}</a></h3>
+
+		<header class="w3-container w3-green">
+		  <h3><a href="/album/{{i.id}}">{{i.album_name}}</a></h3>
+		</header>
+		<div class="w3-container w3-black">
 			<p>Artist: <a href="/artist/{{i.artist.id}}">{{i.artist.name}}</a><br>
 				Year: {{i.year}} </p>
+
+		</div>
+
 		{% endif %}
 
 
 		{% if type == "artist" %}
-			<h3><a href="/artist/{{i.id}}">{{i.name}}</a></h3>
+		<header class="w3-container w3-blue">
+		<h3><a href="/artist/{{i.id}}">{{i.name}}</a></h3>
+		</header>
+
+		<div class="w3-container">
 			{% for j in albums %}
 			<p> <tab>
 			{% if j.artist.name == i.name %}
 			<h3><a href="/album/{{j.id}}">{{ j.album_name }}</a> - {{ j.year }} </h3>
 			{% endif %} </p>
 			{% endfor %}
+		</div>
+
+
 		{% endif %}
 
 
 		{% if type == "song" %}
+		<header class="w3-container w3-green">
 			<h3>{{i.song_name}}</h3>
+		</header>
+
+		<div class="w3-container">
 			<h3><a href="/album/{{i.album.id}}">{{i.album.album_name}}</a></h3>
 			<p>Artist: <a href="/artist/{{i.artist.id}}">{{i.artist.name}}</a><br>
 				Year: {{i.album.year}} </p>
+		</div>
+
 		{% endif %}
 
 	</div>
