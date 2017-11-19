@@ -4,45 +4,48 @@
   <meta charset="utf-8">
   <title>{% block title %}MyMusicList{% endblock %}</title>
   <link rel="stylesheet" href="/files/css/mymusiclist.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="/files/css/w3.css">
+  <link rel="stylesheet" href="/files/css/font-awesome-4.7.0/css/font-awesome.min.css">
 </head>
 <body>
   <header>
-    {% if request.user.is_authenticated %}
-      <ul id='nav_bar'>
-        <li><a class="nav_bar_home" href="/">MyMusicList</a></li>
-        <li><a class="nav_bar_tab" href="/profile/{{request.user.username}}">Hi, {{request.user.username}}</a></li>
-        <li style="float:right"><a class="nav_bar_tab" href="{% url 'logout' %}">Logout</a></li>
-      </ul>
-    {% else %}
-      <ul id='nav_bar'>
-        <li><a class="nav_bar_home" href="/">MyMusicList</a></li>
-        <li><a class="nav_bar_tab" href="{% url 'login' %}">LOGIN</a></li>
-        <li><a class="nav_bar_tab" href="{% url 'signup' %}">SIGN UP</a></li>
-        <li>
-             <div class="search_nav">
-                  <form action="{% url 'search' %}" method="get">
-                            <div class="wrap">
-                 			<div class="search">
-                 			<input class="searchbar" type="text" name="search" placeholder="Search..">
-                 			<input id="searchbytype" type="hidden" name="searchtype" value="album">
-                 		     <button class="button"> <i class="fa fa-search" aria-hidden="true"></i></button>
-                 			</div>
-                 		</div>
-                  </form>
-             </div>
-        </li>
-        <li class="dropdown nav_bar_tab">
-             <a id=search_type href=# class="dropbtn">SEARCH  <i class="fa fa-caret-down"></i></a>
-                   <div class="dropdown-content">
-                        <a href="#" onclick="mainA()" >Album</a>
-                        <a href="#" onclick="mainB()">Artist</a>
-                        <a href="#" onclick="mainC()">Song</a>
-                   </div>
-       </li>
-        <li style="float:right"><button class="nav_bar_tab"type="button" onclick="toggleWallpaper()"></button></li>
-      </ul>
-    {% endif %}
+
+       <div class = "w3-top">
+
+           <div class="w3-bar w3-black w3-large">
+
+
+             <a href="/" id="logo-nav" class="w3-bar-item w3-button w3-blue-gray">MyMusicList</a>
+           {% if request.user.is_authenticated %}
+                <a class="w3-bar-item w3-button" href="/profile/{{request.user.username}}"><i class="fa fa-user-circle-o" aria-hidden="true"></i> Hi, {{request.user.username}}</a>
+                <a class="w3-bar-item w3-button" href="{% url 'logout' %}" style="float:right">>Logout</a>
+           {% else %}
+             <a href="{% url 'login' %}" class="w3-bar-item w3-button">Login</a>
+               <a href="{% url 'signup' %}" class="w3-bar-item w3-button">Sign Up</a>
+           {% endif %}
+
+               <form action="{% url 'search' %}" method="get">
+                         <div class="wrap">
+                           <div class="search">
+                            <input type="text" class="w3-bar-item w3-input w3-black" name="search" placeholder="Search..">
+                             <input id="searchbytype" type="hidden" name="searchtype" value="album">
+                           <button class="w3-bar-item w3-button w3-green"> <i class="fa fa-search" aria-hidden="true"></i></button>
+                           </div>
+                      </div>
+               </form>
+               <div class="w3-dropdown-hover">
+                 <button id="search_type" class="w3-button" style="width:250px;">Search by..  <i class="fa fa-caret-down"></i> </button>
+                 <div class="w3-dropdown-content w3-bar-block w3-card-4">
+                   <a href="#" class=" w3-bar-item w3-button" onclick="mainA()" >Album</a>
+                   <a href="#" class=" w3-bar-item w3-button" onclick="mainB()">Artist</a>
+                   <a href="#" class=" w3-bar-item w3-button" onclick="mainC()">Song</a>
+                 </div>
+
+               </div>
+
+           </div>
+
+      </div>
 
 
 
@@ -50,8 +53,7 @@
 
 
 
-
-    <div class="boxified sidebar">
+    <div class="w3-card-4 w3-green sidebar">
       {% block sidebar %}
         <h2>Featured Songs</h2>
         <img src="/files/images/divide_edsheeran.jpeg" alt="Divide - Ed Sheeran">
@@ -88,17 +90,12 @@
 
 
 
+     <div style="margin: 3em 0 0 0">
+          {% block content %}
+          {% endblock %}
 
+     </div>
 
-
-
-
-
-
-
-
-    {% block content %}
-    {% endblock %}
   <script>
     function toggleWallpaper() {
       document.getElementByID("nav_bar").style.background-color = "white";
