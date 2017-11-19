@@ -4,19 +4,18 @@
 
 
 {% block sidebar %}
-<h2> Album info </h2>
+<img src = "{{result.art}}" alt= "No album art available">
 <p>
-	Album: {{result.name}} <br>
-	Artist: {{artist_name}} <br>
-	Year: {{result.year}} <br>
+	<b> {{result.album_name}} </b> ({{result.year}}) <br>
+	{{artist}} <br> <br>
+	Tags: {{songs.1.genre}} 
 
 {% endblock %}
 
 {% block content %}
-{% for i in songs %}
 <div class = "boxified main">
+{% for i in songs %}
 	<h3> {{i.song_name}} </h3>
-	<p> Genre: {{i.genre}} </p>
-</div>
 {% endfor %}
+</div>
 {% endblock %}

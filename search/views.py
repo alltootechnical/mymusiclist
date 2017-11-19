@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 
 from core.models import *
-from search.musicbrainzhook import *
+from core import exthook
 
 def search(request):
 	type = request.GET.get('searchtype', '')
@@ -32,4 +32,5 @@ def album_profile(request, identifier):
     result = Album.objects.filter(id = identifier)
     artist_name = result[0].artist.name
     songs = Song.objects.filter(album = identifier)
+    exthook.verifyAlbumArt(result[0], artist_name)
     return render(request, 'album.html', {'result':result[0], 'songs': songs, 'artist': artist_name})
