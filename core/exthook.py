@@ -9,11 +9,11 @@ def init():
 	musicbrainzngs.set_useragent("mymusiclist","0.1", contact="none")
 	musicbrainzngs.set_rate_limit(limit_or_interval=False, new_requests=1)
 	print("[Exthook] Initialized")
-	
+
 def verifyAlbumArt(album, artist):
 	if(album.art == None):
 		album.art = fetchAlbumArt(album.album_name, artist)
-    	album.save()
+		album.save()
     #may or may not add checks to see if valid http link
 
 def fetchAlbumArt(name, artist):
