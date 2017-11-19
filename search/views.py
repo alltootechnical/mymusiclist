@@ -32,5 +32,5 @@ def album_profile(request, identifier):
     result = Album.objects.filter(id = identifier)
     artist_name = result[0].artist.name
     songs = Song.objects.filter(album = identifier)
-    albumart = exthook.getAlbumArtByName(result[0].album_name, artist_name)
-    return render(request, 'album.html', {'result':result[0], 'songs': songs, 'artist': artist_name, 'image': albumart})
+    exthook.verifyAlbumArt(result[0], artist_name)
+    return render(request, 'album.html', {'result':result[0], 'songs': songs, 'artist': artist_name})
