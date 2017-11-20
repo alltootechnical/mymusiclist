@@ -10,6 +10,10 @@
 	Source: Local</p>
 {% endblock %}
 
+<!-- ... -->
+<!-- Add if statement to show ONLY IF a user is logged in -->
+<!-- ... -->
+
 {% block content %}
 
 	{% for i in results %}
@@ -24,7 +28,21 @@
 				Year: {{i.year}} </p>
 
 		</div>
-
+		
+		<!-- ... -->
+		<!-- ... -->
+		<div class="w3-dropdown-hover">
+			<button id="search_type" class="w3-button" style="width:200px; text-align: left;"><i class="fa fa-caret-down"></i> </button>
+            <div class="w3-dropdown-content w3-bar-block w3-card-4">
+					<button class=" w3-bar-item w3-button">Update existing playlist</button>
+					<button onclick="alert('{{type}} id is {{i.id}}')">Show {{type}}</button>
+					<button class=" w3-bar-item w3-button">Create new playlist</button>
+			</div>
+		</div>
+		<!-- ... -->
+		<!-- ... -->
+		
+		
 		{% endif %}
 
 
@@ -41,7 +59,20 @@
 			{% endif %} </p>
 			{% endfor %}
 		</div>
-
+		
+		<!-- ... -->
+		<!-- ... -->
+		<div class="w3-dropdown-hover">
+			<button id="search_type" class="w3-button" style="width:200px; text-align: left;"><i class="fa fa-caret-down"></i> </button>
+            <div class="w3-dropdown-content w3-bar-block w3-card-4">
+					<button class=" w3-bar-item w3-button">Update existing playlist</button>
+					<button onclick="alert('{{type}} id is {{i.id}}')">Show {{type}}</button>
+					<button class=" w3-bar-item w3-button">Create new playlist</button>
+			</div>
+		</div>
+		<!-- ... -->
+		<!-- ... -->
+		
 
 		{% endif %}
 
@@ -56,6 +87,20 @@
 			<p>Artist: <a href="/artist/{{i.artist.id}}">{{i.artist.name}}</a><br>
 				Year: {{i.album.year}} </p>
 		</div>
+		
+		<!-- ... -->
+		<!-- ... -->
+		<div class="w3-dropdown-hover">
+			<button id="search_type" class="w3-button" style="width:200px; text-align: left;"><i class="fa fa-caret-down"></i> </button>
+            <div class="w3-dropdown-content w3-bar-block w3-card-4">
+					<button class=" w3-bar-item w3-button">Update existing playlist</button>
+					<button onclick="alert('{{type}} id is {{i.id}}')">Show {{type}}</button>
+					<button class=" w3-bar-item w3-button">Create new playlist</button>
+			</div>
+		</div>
+		<!-- ... -->
+		<!-- ... -->
+		
 
 		{% endif %}
 
