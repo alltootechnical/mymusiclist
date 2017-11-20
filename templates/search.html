@@ -11,7 +11,13 @@
 {% endblock %}
 
 {% block content %}
-
+	
+	{% if results.count == 0 %}
+		<div class="w3-display-middle">
+		<h2>Sorry, but the thing you are looking for is not in our database.</h2>
+		</div>
+	{% endif %}
+	
 	{% for i in results %}
 	<div class = " main w3-margin w3-card-4">
 		{% if type == "album" %}
