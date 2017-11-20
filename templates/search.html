@@ -19,7 +19,7 @@
 		<header class="w3-container w3-green">
 		  <h3><a href="/album/{{i.id}}">{{i.album_name}}</a></h3>
 		</header>
-		<div class="w3-container w3-black">
+		<div class="w3-container  w3-opacity  w3-black">
 			<p>Artist: <a href="/artist/{{i.artist.id}}">{{i.artist.name}}</a><br>
 				Year: {{i.year}} </p>
 
@@ -33,7 +33,7 @@
 		<h3><a href="/artist/{{i.id}}">{{i.name}}</a></h3>
 		</header>
 
-		<div class="w3-container">
+		<div class="w3-container w3-opacity w3-black">
 			{% for j in albums %}
 			<p> <tab>
 			{% if j.artist.name == i.name %}
@@ -47,11 +47,11 @@
 
 
 		{% if type == "song" %}
-		<header class="w3-container w3-green">
+		<header class="w3-container w3-yellow">
 			<h3>{{i.song_name}}</h3>
 		</header>
 
-		<div class="w3-container">
+		<div class="w3-container  w3-opacity  w3-black">
 			<h3><a href="/album/{{i.album.id}}">{{i.album.album_name}}</a></h3>
 			<p>Artist: <a href="/artist/{{i.artist.id}}">{{i.artist.name}}</a><br>
 				Year: {{i.album.year}} </p>

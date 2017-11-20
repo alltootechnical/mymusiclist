@@ -15,19 +15,33 @@
            <div class="w3-bar w3-black w3-large">
 
 
-             <a href="/" id="logo-nav" class="w3-bar-item w3-button w3-blue-gray">MyMusicList</a>
+             <a href="/" id="logo-nav" class="w3-bar-item w3-button w3-blue-gray" style="font-size:1.2em;">MyMusicList</a>
            {% if request.user.is_authenticated %}
-                <a class="w3-bar-item w3-button" href="/profile/{{request.user.username}}"><i class="fa fa-user-circle-o" aria-hidden="true"></i> Hi, {{request.user.username}}</a>
-                <a class="w3-bar-item w3-button" href="{% url 'logout' %}" style="float:right">>Logout</a>
+                <!-- <a class="w3-bar-item w3-button" href="/profile/{{request.user.username}}" style="float:right" ><i class="fa fa-user-circle-o" aria-hidden="true"></i></a> -->
+                <!-- <a class="w3-bar-item w3-button" href="{% url 'logout' %}" style="float:right">Logout</a> -->
+
+                <div class="w3-dropdown-hover" style="float:right;">
+                  <button id="user_dropdown" class="w3-button" ><i class="fa fa-user-circle-o" aria-hidden="true"></i> {{request.user.username}}</a></button>
+                  <div class="w3-dropdown-content w3-bar-block w3-card-4">
+                    <a href="/profile/{{request.user.username}}" class=" w3-bar-item w3-button">View Profile</a>
+                    <a href="{% url 'logout' %}" class=" w3-bar-item w3-button">Logout</a>
+                  </div>
+
+             </div>
+
+
            {% else %}
-             <a href="{% url 'login' %}" class="w3-bar-item w3-button">Login</a>
-               <a href="{% url 'signup' %}" class="w3-bar-item w3-button">Sign Up</a>
+           <div style="float:right;     ">
+                <a href="{% url 'login' %}" class="w3-bar-item w3-button">Login</a>
+                  <a href="{% url 'signup' %}" class="w3-bar-item w3-button">Sign Up</a>
+           </div>
+
            {% endif %}
 
                <form action="{% url 'search' %}" method="get">
                          <div class="wrap">
                            <div class="search">
-                            <input type="text" class="w3-bar-item w3-input w3-black" name="search" placeholder="Search..">
+                            <input type="text" class="w3-bar-item w3-input w3-black" name="search" style="width:30vw; color:pink;" placeholder="Search..">
                              <input id="searchbytype" type="hidden" name="searchtype" value="album">
                            <button class="w3-bar-item w3-button w3-green"> <i class="fa fa-search" aria-hidden="true"></i></button>
                            </div>
