@@ -2,6 +2,7 @@
 import pprint
 import musicbrainzngs
 from musicbrainzngs import ResponseError
+from musicbrainzngs import NetworkError
 from core.models import Album
 pp = pprint.PrettyPrinter(indent=4)
 
@@ -18,12 +19,12 @@ def verifyAlbumArt(album, artist):
 
 def fetchAlbumArt(name, artist):
 	debug("GET " + name + " " + artist)
-	results = musicbrainzngs.search_release_groups(name, limit = 3, artistname=artist, primarytype="album")
-	#pp.pprint(results['release-group-list'])
-	results = results['release-group-list']
-	resultid = results[0]['id']
-	debug("ID =  " + resultid)
 	try:
+		results = musicbrainzngs.search_release_groups(name, limit = 3, artistname=artist, primarytype="album")
+		#pp.pprint(results['release-group-list'])
+		results = results['release-group-list']
+		resultid = results[0]['id']
+		debug("ID =  " + resultid)
 		imagelist = musicbrainzngs.get_release_group_image_list(resultid)
 	except ResponseError:
 		debug("No image found.")
