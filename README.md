@@ -6,6 +6,7 @@ This is a work in progress as of now...
 ## Prerequisites
 * Python 2.7/3.4 or later
 * `virtualenv` (preferred)
+* `musicbrainzngs` (required)
 * SQLite3 (for testing)
     * Add the `sqlite3` executable in your `PATH`
 * MySQL (for the final version)
@@ -15,8 +16,9 @@ This assumes both Python and Git have been already installed and added to the `P
 
 1. Clone the MyMusicList repo from `https://gitlab.discs.ateneo.edu/brian/mymusiclist` using Git
     * `git clone https://gitlab.discs.ateneo.edu/brian/mymusiclist`
-2. Install the latest version of `virtualenv`
+2. Install the latest version of `virtualenv` and `musicbrainzngs`
     * `pip install virtualenv`
+    * `pip install musicbrainzngs`
 3. Setup the Python virtual environment; you can opt to use any name you prefer
     * `virtualenv venv`
 4. Activate the virtualenv
