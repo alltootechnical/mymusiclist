@@ -8,12 +8,12 @@
 <p>
 	<b> {{result.album_name}} </b> ({{result.year}}) <br>
 	{{artist}} <br> <br>
-	Tags: {{songs.1.genre}} 
+	Tags: {{songs.1.genre}}
 
 {% endblock %}
 
 {% block content %}
-<div class = "boxified main">
+<div class = "w3-card-4 main">
 {% for i in songs %}
 	<h3> {{i.song_name}} </h3>
 {% endfor %}

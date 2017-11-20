@@ -18,7 +18,7 @@
 
 		<header class="w3-row w3-green">
 			<div class="w3-col w3-container w3-green" style="width:95%">
-					 <h3><a href="/album/{{i.id}}" style="text-decoration:none">{{i.album_name}}</a></h3>
+					 <h3 ><a href="/album/{{i.id}}" style="text-decoration:none">{{i.album_name}}</a></h3>
 			</div>
 
 			{% if request.user.is_authenticated %}
@@ -27,7 +27,6 @@
 					  <button id="search_type" class="w3-button" "><i class="fa fa-plus fa-2x" aria-hidden="true"></i> </button>
 					  <div class="w3-dropdown-content w3-bar-block w3-card-4"  style="right:0">
 							  <button class=" w3-bar-item w3-button">Update existing playlist</button>
-							  <button class=" w3-bar-item w3-button" onclick="alert('{{type}} id is {{i.id}}')">Show {{type}}</button>
 							  <button class=" w3-bar-item w3-button">Create new playlist</button>
 					  </div>
 				  </div>
@@ -48,16 +47,15 @@
 
 		<header class="w3-row w3-green">
 			<div class="w3-col w3-container w3-green" style="width:95%">
-					<h3><a href="/artist/{{i.id}}" style="text-decoration:none">{{i.name}}</a></h3>
+					<h3 ><a href="/artist/{{i.id}}" style="text-decoration:none">{{i.name}}</a></h3>
 			</div>
 
 			{% if request.user.is_authenticated %}
 			<div class="w3-col w3-container w3-green " style="width:5%" >
 				  <div class="w3-dropdown-hover w3-right w3-green">
-					  <button id="search_type" class="w3-button" style="width:20px;"><i class="fa fa-plus fa-2x" aria-hidden="true"></i> </button>
+					  <button id="search_type" class="w3-button"><i class="fa fa-plus fa-2x" aria-hidden="true"></i> </button>
 					  <div class="w3-dropdown-content w3-bar-block w3-card-4"  style="right:0">
 							  <button class=" w3-bar-item w3-button">Update existing playlist</button>
-							  <button class=" w3-bar-item w3-button" onclick="alert('{{type}} id is {{i.id}}')">Show {{type}}</button>
 							  <button class=" w3-bar-item w3-button">Create new playlist</button>
 					  </div>
 				  </div>
@@ -89,10 +87,9 @@
 			{% if request.user.is_authenticated %}
 			<div class="w3-col w3-container w3-green " style="width:5%" >
 				  <div class="w3-dropdown-hover w3-right w3-indigo">
-					  <button id="search_type" class="w3-button" style="width:20px;"><i class="fa fa-plus fa-2x" aria-hidden="true"></i> </button>
+					  <button id="search_type" class="w3-button"><i class="fa fa-plus fa-2x" aria-hidden="true"></i> </button>
 					  <div class="w3-dropdown-content w3-bar-block w3-card-4"  style="right:0">
 							  <button class=" w3-bar-item w3-button">Update existing playlist</button>
-							  <button class=" w3-bar-item w3-button" onclick="alert('{{type}} id is {{i.id}}')">Show {{type}}</button>
 							  <button class=" w3-bar-item w3-button">Create new playlist</button>
 					  </div>
 				  </div>
