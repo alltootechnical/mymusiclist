@@ -16,9 +16,8 @@ This assumes both Python and Git have been already installed and added to the `P
 
 1. Clone the MyMusicList repo from `https://gitlab.discs.ateneo.edu/brian/mymusiclist` using Git
     * `git clone https://gitlab.discs.ateneo.edu/brian/mymusiclist`
-2. Install the latest version of `virtualenv` and `musicbrainzngs`
+2. Install the latest version of `virtualenv`
     * `pip install virtualenv`
-    * `pip install musicbrainzngs`
 3. Setup the Python virtual environment; you can opt to use any name you prefer
     * `virtualenv venv`
 4. Activate the virtualenv
@@ -26,6 +25,8 @@ This assumes both Python and Git have been already installed and added to the `P
     * `. `*`path/to/venv/`*`bin/activate` (for Linux/Mac OS)
 5. Install Django using `pip` (inside the virtualenv)
     * `pip install django`
+6. Install musicbrainzngs using `pip` (also inside the virtualenv)
+    * `pip install musicbrainzngs` 
 6. Make sure that the `migrations` folder is empty except for the `__init__.py` file
 7. Delete the `db.sqlite3` file if it exists
 8. Run the following commands (inside the virtualenv):
