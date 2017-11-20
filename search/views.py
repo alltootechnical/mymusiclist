@@ -1,20 +1,23 @@
 from django.shortcuts import render, redirect, get_object_or_404
-
+from django.http import HttpResponse
 from core.models import *
 from core import exthook
 
 def search(request):
 	type = request.GET.get('searchtype', '')
 	term = request.GET.get('search', '')
+	
+	# doesn't work against spaces
+	if not term:
+		return HttpResponse(status=500)
+	
 	artistAlbums = Album.objects.filter(artist__name__contains = term)
-
 	if type == 'song':
 		results = Song.objects.filter(song_name__contains = term)
 	elif type == 'album':
 		results = Album.objects.filter(album_name__contains = term)
 	elif type == 'artist':
 		results = Artist.objects.filter(name__contains = term)
-
 	context = {
 		'type': type,
 		'term': term,

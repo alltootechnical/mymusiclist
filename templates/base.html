@@ -27,8 +27,8 @@
                <form action="{% url 'search' %}" method="get">
                          <div class="wrap">
                            <div class="search">
-                            <input type="text" class="w3-bar-item w3-input w3-black" name="search" placeholder="Search..">
-                             <input id="searchbytype" type="hidden" name="searchtype" value="album">
+                            <input id="searchbarinput" type="text" class="w3-bar-item w3-input w3-black" name="search" placeholder="Search.." required>
+                            <input id="searchbytype" type="hidden" name="searchtype" value="album">
                            <button class="w3-bar-item w3-button w3-green"> <i class="fa fa-search" aria-hidden="true"></i></button>
                            </div>
                       </div>
