@@ -9,6 +9,15 @@
 
 {% block content %}
 
+{% if request.user.is_authenticated %}
+
+<div class="w3-panel w3-green w3-padding">
+       <h1 class="w3-text-white">
+       <b>Welcome to MyMusicList</b></h1>
+</div>
+
+{% else %}
+
 <div class="w3-display-container" style="width:100em; height:50em;overflow:hidden;">
 
     <div class="hero">
@@ -65,7 +74,7 @@ MyMusicList is the answer.
        </p>
        </div>
   </div>
-<div class="main">
+<div class="">
 
 
 <div class="w3-row-padding w3-blue">
@@ -126,6 +135,5 @@ Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculu
    <p>Footer information goes here</p>
   </footer> -->
 
-  {% if request.user.is_authenticated %}
-  {% endif %}
+ {% endif %}
 {% endblock %}
