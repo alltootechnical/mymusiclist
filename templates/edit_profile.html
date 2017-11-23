@@ -3,7 +3,7 @@
 {% block title %}Edit Profile{% endblock %}
 
 {% block content %}
-<div class="boxified main profile">
+<div class="w3-card-4 w3-green  w3-padding">
 {% if request.user.is_authenticated %}
 {% if user.username == request.user.username %}
     <h2>Edit Profile</h2>

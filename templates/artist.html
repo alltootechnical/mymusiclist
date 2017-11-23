@@ -4,6 +4,7 @@
 
 
 {% block sidebar %}
+ <div class="w3-card-4 w3-black w3-opacity sidebar w3-round">
 <h2> Artist info </h2>
 <p>
 	Artist: {{result.name}} <br>
@@ -11,13 +12,40 @@
 	<br>
 	<h2> Description </h2>
 	{{result.description}}
+</div>
 {% endblock %}
 
 {% block content %}
 {% for i in albums %}
-<div class = "w3-card-4 main w3-margin">
-	<h3> <a class = "link" href= "/album/{{i.id}}"> {{i.album_name}} </a></h3>
-	<p> Year: {{i.year}} </p>
+
+
+<div class = " main w3-margin w3-card w3-hover-shadow w3-animate-opacity ">
+	<header class="w3-row w3-green">
+		<div class="w3-col w3-container w3-green" style="width:95%">
+				 <h3 ><a href="/album/{{i.id}}" style="text-decoration:none">{{i.album_name}}</a></h3>
+		</div>
+
+		{% if request.user.is_authenticated %}
+		<div class="w3-col w3-container w3-green " style="width:5%" >
+			  <div class="w3-dropdown-hover w3-right w3-green">
+				  <button id="search_type" class="w3-button" "><i class="fa fa-plus fa-2x" aria-hidden="true"></i> </button>
+				  <div class="w3-dropdown-content w3-bar-block w3-card-4"  style="right:0">
+						  <button class=" w3-bar-item w3-button">Update existing playlist</button>
+						  <button class=" w3-bar-item w3-button">Create new playlist</button>
+				  </div>
+			  </div>
+		</div>
+		{% endif %}
+
+	</header>
+	<div class="w3-container  w3-opacity  w3-black">
+		<p>
+			Year: {{i.year}} </p>
+
+	</div>
+
+
 </div>
+
 {% endfor %}
 {% endblock %}

@@ -4,18 +4,33 @@
 
 
 {% block sidebar %}
-<img src = "{{result.art}}" alt= "No album art available">
-<p>
-	<b> {{result.album_name}} </b> ({{result.year}}) <br>
-	{{artist}} <br> <br>
-	Tags: {{songs.1.genre}}
+ <div class="w3-card-4 w3-black w3-opacity sidebar w3-round">
+
+	<img src = "{{result.art}}" class="w3-round" alt= "No album art available">
+	<p>
+		<b> {{result.album_name}} </b> ({{result.year}}) <br>
+		{{artist}} <br> <br>
+		Tags: {{songs.1.genre}}
+	</p>
+
+
+</div>
 
 {% endblock %}
 
 {% block content %}
-<div class = "w3-card-4 main">
+<div id="song_list" class = "w3-card-4 main w3-green w3-padding" >
 {% for i in songs %}
-	<h3> {{i.song_name}} </h3>
+	<a href="javascript:void" style="text-decoration:none"><i class="fa fa-square-o" aria-hidden="true"></i> {{i.song_name}} <br/>
+	</a>
 {% endfor %}
 </div>
 {% endblock %}
+
+<script>
+            $(document).ready(function () {
+                $('i').click(function () {
+                     $(this).find('i').toggleClass('fa-square-o fa-check-square-o');
+                });
+            });
+</script>
