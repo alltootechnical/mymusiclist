@@ -5,6 +5,7 @@ from django.views.generic.edit import UpdateView
 
 from user.forms import SignUpForm
 from user.models import *
+from playlist.models import MusicPlaylist
 
 def signup(request):
     if request.method == 'POST':
@@ -20,7 +21,8 @@ def signup(request):
 
 def user_profile_page(request, slug):
     user = get_object_or_404(User, username=slug)
-    return render(request, 'profile.html', {'profile': user})
+    playlists = MusicPlaylist.objects.filter(user = user)
+    return render(request, 'profile.html', {'profile': user, 'playlists': playlists})
 
 class EditProfile(UpdateView):
     model = User

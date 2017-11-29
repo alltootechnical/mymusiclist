@@ -53,7 +53,7 @@
 
 
 
-    <div class="w3-card-4 w3-green sidebar">
+    <div class="w3-card-4 w3-green sidebar" style="position:fixed">
       {% block sidebar %}
         <h2>Featured Songs</h2>
         <img src="/files/images/divide_edsheeran.jpeg" alt="Divide - Ed Sheeran">
@@ -65,7 +65,6 @@
       {% endblock %}
     </div>
   </header>
-
 
 
 
@@ -85,6 +84,9 @@
 		document.getElementById("search_type").innerHTML = "Song Search";
 		document.getElementById("searchbytype").value = "song";
 	}
+
+  {% block js %}
+  {% endblock %}
 	</script>
 
 

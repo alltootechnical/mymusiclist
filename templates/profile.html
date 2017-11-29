@@ -3,8 +3,8 @@
 {% block title %}{{profile.username}}'s Profile{% endblock %}
 
 {% block content %}
-<div class="boxified main profile">
 {% if request.user.is_authenticated %}
+  <div class="boxified main profile">
   <h2>{{profile.username}}'s Profile</h2>
   <ul>
       <li><strong>First Name:</strong> {{profile.first_name}}</li>
@@ -13,9 +13,20 @@
   </ul>
   {% if profile.username == request.user.username %}
   <a href="edit" class="buttoned">Edit user profile</a>
+  </div>
   {% endif %}
+  <div class = "boxified main profile">
+  <h2>{{profile.username}}'s Playlists </h2>
+  {% for i in playlists %}
+  <a class="link" href="/playlist/{{i.id}}">{{i.playlist_name}}</a>
+  {% endfor %}
+  </div>
+
+
+
 {% else %}
+  <div class="boxified main profile">
     <p>Please <a href="{% url 'login' %}">log in</a> to your account to view {{profile.username}}'s profile.</p>
+  </div>
 {% endif %}
-</div>
 {% endblock %}
