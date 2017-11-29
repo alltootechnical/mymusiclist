@@ -28,8 +28,8 @@ def addSong(request):
 	playlist = MusicPlaylist.objects.filter(user = request.user, playlist_name = plname)
 
 	if(len(playlist) == 0):
-		playlist[0] = MusicPlaylist(playlist_name = "New", is_public = True, user = request.user)
-		playlist.save()
+		playlist = [MusicPlaylist(playlist_name = "New", is_public = True, user = request.user)]
+		playlist[0].save()
 
 	#MusicEntry Zone
 
