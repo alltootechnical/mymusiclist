@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %}Viewing Playlist{% endblock %}
+
+
+{% block sidebar %}
+<p>
+	<b> {{result.playlist_name}} </b> <br> <br>
+	made by 
+	<a class = "link" href= "/profile/{{owner.username}}">{{owner.first_name}} {{owner.last_name}}</a> <br>
+{% endblock %}
+
+{% block content %}
+<div class = "boxified main">
+{% for i in entries %}
+	<h3> {{i.song.song_name}} </h3>
+{% endfor %}
+</div>
+{% endblock %}

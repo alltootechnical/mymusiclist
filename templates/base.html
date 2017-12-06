@@ -95,10 +95,6 @@
 
 
 
-
-
-
-
 	<script>
 	function mainA(){
 		document.getElementById("search_type").innerHTML = "Album Search";
@@ -112,6 +108,9 @@
 		document.getElementById("search_type").innerHTML = "Song Search";
 		document.getElementById("searchbytype").value = "song";
 	}
+
+  {% block js %}
+  {% endblock %}
 	</script>
 
 
