@@ -6,6 +6,10 @@
   <link rel="stylesheet" href="/files/css/mymusiclist.css">
   <link rel="stylesheet" href="/files/css/w3.css">
   <link rel="stylesheet" href="/files/css/font-awesome-4.7.0/css/font-awesome.min.css">
+
+
+
+
 </head>
 <body>
   <header>
@@ -15,19 +19,33 @@
            <div class="w3-bar w3-black w3-large">
 
 
-             <a href="/" id="logo-nav" class="w3-bar-item w3-button w3-blue-gray">MyMusicList</a>
+             <a href="/" id="logo-nav" class="w3-bar-item w3-button w3-blue-gray"><i class="fa fa-headphones" aria-hidden="true"></i> MyMusicList</a>
            {% if request.user.is_authenticated %}
-                <a class="w3-bar-item w3-button" href="/profile/{{request.user.username}}"><i class="fa fa-user-circle-o" aria-hidden="true"></i> Hi, {{request.user.username}}</a>
-                <a class="w3-bar-item w3-button" href="{% url 'logout' %}" style="float:right">>Logout</a>
+                <!-- <a class="w3-bar-item w3-button" href="/profile/{{request.user.username}}" style="float:right" ><i class="fa fa-user-circle-o" aria-hidden="true"></i></a> -->
+                <!-- <a class="w3-bar-item w3-button" href="{% url 'logout' %}" style="float:right">Logout</a> -->
+
+                <div class="w3-dropdown-hover" style="float:right;">
+                  <button id="user_dropdown" class="w3-button" ><i class="fa fa-user-circle-o" aria-hidden="true"></i> {{request.user.username}}</a></button>
+                  <div class="w3-dropdown-content w3-bar-block w3-card-4">
+                    <a href="/profile/{{request.user.username}}" class=" w3-bar-item w3-button">View Profile</a>
+                    <a href="{% url 'logout' %}" class=" w3-bar-item w3-button">Logout</a>
+                  </div>
+
+             </div>
+
+
            {% else %}
-             <a href="{% url 'login' %}" class="w3-bar-item w3-button">Login</a>
-               <a href="{% url 'signup' %}" class="w3-bar-item w3-button">Sign Up</a>
+           <div style="float:right;     ">
+                <a href="{% url 'login' %}" class="w3-bar-item w3-button">Login</a>
+                  <a href="{% url 'signup' %}" class="w3-bar-item w3-button">Sign Up</a>
+           </div>
+
            {% endif %}
 
                <form action="{% url 'search' %}" method="get">
                          <div class="wrap">
                            <div class="search">
-                            <input type="text" class="w3-bar-item w3-input w3-black" name="search" placeholder="Search..">
+                            <input type="text" class="w3-bar-item w3-input w3-black" name="search" style="width:30vw;" placeholder="Search..">
                              <input id="searchbytype" type="hidden" name="searchtype" value="album">
                            <button class="w3-bar-item w3-button w3-green"> <i class="fa fa-search" aria-hidden="true"></i></button>
                            </div>
@@ -50,20 +68,26 @@
 
 
 
+        <div>
+             {% block sidebar %}
+             <div class="w3-card-4 w3-black w3-opacity sidebar">
+               <h2>Featured Songs</h2>
+               <img src="/files/images/divide_edsheeran.jpeg" alt="Divide - Ed Sheeran">
+               Divide - Ed Sheeran
+               <img src="/files/images/palette_iu.jpeg" alt="Palette - IU">
+               Palette - IU
+               <img src="/files/images/rockstar_postmalone21savage.jpeg" alt="Rockstar">
+               Rockstar
+              </div>
+             {% endblock %}
+
+        </div>
 
 
 
-    <div class="w3-card-4 w3-green sidebar" style="position:fixed">
-      {% block sidebar %}
-        <h2>Featured Songs</h2>
-        <img src="/files/images/divide_edsheeran.jpeg" alt="Divide - Ed Sheeran">
-        Divide - Ed Sheeran
-        <img src="/files/images/palette_iu.jpeg" alt="Palette - IU">
-        Palette - IU
-        <img src="/files/images/rockstar_postmalone21savage.jpeg" alt="Rockstar">
-        Rockstar
-      {% endblock %}
-    </div>
+
+
+
   </header>
 
 
@@ -103,5 +127,6 @@
       document.getElementByID("nav_bar").style.background-color = "white";
     }
   </script>
+  
 </body>
 </html>

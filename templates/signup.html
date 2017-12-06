@@ -1,8 +1,11 @@
 {% extends 'base.html' %}
 
+{% block sidebar %}
+{% endblock %}
+
 {% block content %}
 
-<div class='boxified main signup_form'>
+<div class='w3-card-4 w3-green  w3-padding'>
 {% if user.is_authenticated %}
     <p>You are already logged in as {{user.username}}.</p>
     <p><a href="/logout">Log out</a> or <a href="/">return to home page</a>.</p>

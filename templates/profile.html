@@ -2,7 +2,11 @@
 
 {% block title %}{{profile.username}}'s Profile{% endblock %}
 
+{% block sidebar %}
+{% endblock %}
+
 {% block content %}
+<div class="w3-card-4 w3-green w3-container  w3-padding profile">
 {% if request.user.is_authenticated %}
   <div class="boxified main profile">
   <h2>{{profile.username}}'s Profile</h2>

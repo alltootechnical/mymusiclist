@@ -2,51 +2,142 @@
 
 {% block title %}MyMusicList{% endblock %}
 
+
+{% block sidebar %}
+{% endblock %}
+
+
 {% block content %}
-  <div class="boxified main">
+
+{% if request.user.is_authenticated %}
+
+<div class="w3-panel w3-green w3-padding">
+       <h1 class="w3-text-white">
+       <b>Welcome to MyMusicList</b></h1>
+</div>
+
+{% else %}
+
+
+
+<div class="w3-display-container" style="width:100em; height:50em;overflow:hidden;">
+
+    <div class="hero">
+          <img class="mySlides  w3-animate-fade" src="/files/images/hero1.jpg" style="width:100%">
+          <img class="mySlides  w3-animate-fade" src="/files/images/hero2.jpg" style="width:100%">
+    </div>
+
+    <div class="w3-display-middle w3-display-container w3-large">
+
+          <div class="w3-panel w3-green w3-padding ">
+                 <h1 class="w3-text-white">
+                 <b>Easily keep track of all your favorite artists in one convenient place</b></h1>
+          </div>
+          <div class="w3-display-bottom">
+               <a  href="{% url 'signup' %}" class="w3-btn w3-white w3-padding-up ">Sign Up Now</a>
+          </div>
+
+
+    </div>
+</div>
+
+
+<script>
+var slideIndex = 0;
+carousel();
+
+function carousel() {
+    var i;
+    var x = document.getElementsByClassName("mySlides");
+    for (i = 0; i < x.length; i++) {
+      x[i].style.display = "none";
+    }
+    slideIndex++;
+    if (slideIndex > x.length) {slideIndex = 1}
+    x[slideIndex-1].style.display = "block";
+    setTimeout(carousel, 5000); // Change image every 2 seconds
+}
+</script>
+
+  <div class="w3-panel  w3-display-container w3-white w3-center" style="height:50em">
+       <div class="w3-margin w3-display-middle">
+
+
        <h2>What is MyMusicList?</h2>
-       <p>
-			<img src="/files/images/logo.jpg" /> </br> </br>
-            Do you want to see music like you’ve never before? Do you want to make a playlist without it feeling lifeless and a hassle? Do you want to show off your hip-and-cool music with your friends?
+       <div class="w3-display-container" style="height:30em;">
+                <img src="/files/images/logo.jpg"class="w3-round w3-card w3-display-middle w3-image"/>
+
+       </div>
+
+       <p style="font-size:20px">
+            Do you want to see music like you’ve never before? Do you want to make a playlist without it
+            feeling lifeless and a hassle? Do you want to show off your hip-and-cool music with your friends?
 MyMusicList is the answer.
-
        </p>
+       </div>
   </div>
-  <div class="boxified main">
-       <h2>Features</h2>
-       <p>
-    <div class="img-container">
-        <img src="/files/images/image2.png" />
-        <p>
-	“Playlist Manager”</br>
-	MyMusicList features a simplistic playlist manager that is created for the user’s convenience but still allows a lot of features without overwhelming the user. With MyMusicList’s playlist manager, one can manage multiple playlists, organize music entries, and so much more.
-</p>
-    </div>
-    <div class="img-container">
-        <img src="/files/images/image3.png" />
-        <p>“Customizable Tags”</br>
-	MyMusicList features customizable tags that you can attach to any music entry. It makes making playlists more personal and makes organizing music easier.
+<div class="">
 
-</p>
+
+<div class="w3-row w3-center  w3-blue">
+     
+     <h1>Features</h1>
+  <div class="w3-card-2 w3-col s4 w3-margin" style="width:30%">
+
+    <img src="/files/images/image2.png" alt="playlist" style="width:100%">
+    <div class="w3-container w3-center">
+         <p>
+     “Playlist Manager”</br>
+     MyMusicList features a simplistic playlist manager that is created for the user’s convenience but still allows a lot of features without overwhelming the user. With MyMusicList’s playlist manager, one can manage multiple playlists, organize music entries, and so much more.
+    </p>
     </div>
-    <div class="img-container">
-        <img src="/files/images/image4.png" />
-        <p>“S.S. Integration”</br>
-	Your MyMusicList account can be integrated with your selected social media accounts, so you can share your playlists with your friends and followers. You don’t have to leave the site to listen to your playlist because MyMusicList is integrated with your preferred music streaming service.
-</p>
-    </div>
-     </p>
   </div>
-  <div class="boxified main">
+
+
+    <div class="w3-card-2 w3-col s4 w3-margin" style="width:30%">
+
+      <img src="/files/images/image4.png" alt="playlist" style="width:100%">
+      <div class="w3-container w3-center">
+           <p>“S.S. Integration”</br>
+   	Your MyMusicList account can be integrated with your selected social media accounts, so you can share your playlists with your friends and followers. You don’t have to leave the site to listen to your playlist because MyMusicList is integrated with your preferred music streaming service.
+   </p>
+      </div>
+    </div>
+
+
+      <div class="w3-card-2 w3-col s4 w3-margin" style="width:30%">
+
+        <img src="/files/images/image3.png" alt="playlist" style="width:100%">
+        <div class="w3-container w3-center">
+             <p>“Customizable Tags”</br>
+    	MyMusicList features customizable tags that you can attach to any music entry. It makes making playlists more personal and makes organizing music easier.
+
+    </p>
+        </div>
+      </div>
+
+     </div>
+
+
+
+</div>
+
+  <div class="w3-panel w3-teal">
        <h2>Meet The Team</h2>
 
-       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum finibus magna eros. Nulla non mauris non mi ornare mattis vel vel diam. Suspendisse malesuada lacus at venenatis sollicitudin. Sed et ultrices ex. Praesent feugiat bibendum nibh. Sed commodo elementum turpis. Morbi faucibus nunc sagittis, rutrum nisl quis, fermentum orci.</br></br>
+     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum finibus magna eros. Nulla non mauris non mi ornare mattis vel vel diam. Suspendisse malesuada lacus at venenatis sollicitudin. Sed et ultrices ex. Praesent feugiat bibendum nibh. Sed commodo elementum turpis. Morbi faucibus nunc sagittis, rutrum nisl quis, fermentum orci.</br></br>
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vel tristique risus. Cras molestie pretium urna, a lobortis diam dictum aliquet. Pellentesque non fermentum dolor, sed aliquet dolor. Etiam mauris ex, congue vehicula eleifend vel, hendrerit fermentum velit. In ac tempus justo. Aliquam nec rutrum nibh. Sed pulvinar ex sed ex tincidunt tempor. Praesent tristique semper mauris, vel pretium sapien congue a.</br></br>
 
 Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Mauris suscipit nec velit non egestas. Quisque auctor viverra urna, at euismod turpis ornare id. Aliquam pharetra purus quis dui blandit tincidunt. Quisque massa ligula, malesuada vel leo eu, accumsan vulputate nulla. Integer faucibus malesuada pharetra. Duis varius sapien sit amet justo malesuada fringilla. Integer eget ex sed urna auctor vestibulum. Aliquam sit amet molestie velit, a pretium ligula. Mauris gravida turpis vitae scelerisque finibus.
+
   </div>
 
-  {% if request.user.is_authenticated %}
-  {% endif %}
+<!--
+  <footer class="w3-container w3-teal">
+   <h5>Footer</h5>
+   <p>Footer information goes here</p>
+  </footer> -->
+
+ {% endif %}
 {% endblock %}
