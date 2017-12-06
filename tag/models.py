@@ -8,6 +8,6 @@ class Tag(models.Model):
 	def __str__(self):
 		return self.name
 
-class TagEntry(models.Model):
+class EntryTag(models.Model):
 	tag = models.ForeignKey(Tag)
 	music_entry = models.ForeignKey(MusicEntry)
