@@ -11,20 +11,12 @@ class MusicPlaylist(models.Model):
 		return self.playlist_name
 
 class MusicEntry(models.Model):
-	RATING_CHOICES = (
-		(0,'1'),
-		(1,'2'),
-		(2,'3'),
-		(3,'4'),
-		(4,'5'),
-		(5,'6'),
-		(6,'7'),
-		(7,'8'),
-		(8,'9'),
-		(9,'10')
-		)
 	id = models.AutoField(primary_key=True)
 	order_in_playlist = models.PositiveSmallIntegerField()
-	rating = models.DecimalField(max_digits=1, decimal_places=0, choices=RATING_CHOICES)
+	rating = models.DecimalField(max_digits=1, decimal_places=0)
 	playlist = models.ForeignKey(MusicPlaylist)
 	song = models.ForeignKey(Song)
+
+class Follows(models.Model):
+	user = models.ForeignKey(User)
+	playlist = models.ForeignKey(MusicPlaylist)
