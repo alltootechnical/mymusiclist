@@ -16,3 +16,7 @@ class MusicEntry(models.Model):
 	rating = models.DecimalField(max_digits=1, decimal_places=0)
 	playlist = models.ForeignKey(MusicPlaylist)
 	song = models.ForeignKey(Song)
+
+class Follows(models.Model):
+	user = models.ForeignKey(User)
+	playlist = models.ForeignKey(MusicPlaylist)
