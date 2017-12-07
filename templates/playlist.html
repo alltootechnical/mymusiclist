@@ -4,10 +4,12 @@
 
 
 {% block sidebar %}
+<div class="w3-card-4 w3-black w3-opacity sidebar w3-round">
 <p>
 	<b> {{result.playlist_name}} </b> <br> <br>
 	made by 
 	<a class = "link" href= "/profile/{{owner.username}}">{{owner.first_name}} {{owner.last_name}}</a> <br>
+</div>
 {% endblock %}
 
 {% block content %}
