@@ -17,8 +17,8 @@
   </ul>
   {% if profile.username == request.user.username %}
   <a href="edit" class="buttoned">Edit user profile</a>
-  </div>
   {% endif %}
+  </div>
   <div class = "boxified main profile">
   <h2>{{profile.username}}'s Playlists </h2>
   {% for i in playlists %}
